@@ -13,17 +13,26 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
     @Transactional
-    public void add(User user) {
+    public void save(User user) {
         userDAO.save(user);
     }
 
-
-    public void revoveUser() {
+    @Transactional
+    public void removeUser(long id) {
+        userDAO.removeUser(id);
 
     }
+    @Transactional
+    public User findUser(long id) {
+        return userDAO.findUser(id);
+    }
 
-
+    @Transactional
     public List<User> getAllUser() {
-        return null;
+        return userDAO.getAllUser();
+    }
+    @Transactional
+    public void editUser(User user) {
+        userDAO.editUser(user);
     }
 }

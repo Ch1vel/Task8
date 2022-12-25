@@ -16,12 +16,18 @@ public class UserDAO {
     public void save(User user) {
         entityManager.persist(user);
     }
-    public void revoveUser(User user) {
-        entityManager.remove(user);
+    public void removeUser(long id) {
+        entityManager.remove(findUser(id));
     }
 
-
+    public void editUser(User user) {
+        entityManager.merge(user);
+    }
     public List<User> getAllUser() {
         return entityManager.createQuery("from User",User.class).getResultList();
+    }
+
+    public User findUser(long id) {
+        return entityManager.find(User.class,id);
     }
 }
