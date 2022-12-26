@@ -2,15 +2,16 @@ package org.example.web.controllers;
 
 import org.example.web.entity.User;
 import org.example.web.service.UserService;
+import org.example.web.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class HelloController {
+public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceInterface userService;
     @GetMapping("/")
     public String welcomePage() {
         return "welcomePage";
